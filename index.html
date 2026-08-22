@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Atharva Thakar is a Sydney-based marketing and business strategist turning complex markets into measurable revenue."
+    />
+    <title>Atharva Thakar — Marketing &amp; Business Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root,
+      .sw-root {
+        --sw-bg: #080b0a;
+        --sw-ink: #f3f1ea;
+        --sw-ink-soft: rgba(243, 241, 234, 0.62);
+        --sw-accent: #57c785;
+        --sw-font-display: "Manrope", sans-serif;
+        --sw-font-body: "Inter", sans-serif;
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: #080b0a;
+        scroll-behavior: auto;
+      }
+
+      body {
+        margin: 0;
+        background: #080b0a;
+        color: #f3f1ea;
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .sw-root::after {
+        position: fixed;
+        inset: 0;
+        z-index: 15;
+        pointer-events: none;
+        background:
+          radial-gradient(120% 100% at 50% 42%, transparent 38%, rgba(3, 6, 5, 0.58) 100%),
+          linear-gradient(180deg, rgba(3, 6, 5, 0.64), transparent 20%, transparent 68%, rgba(3, 6, 5, 0.74));
+        content: "";
+      }
+
+      .sw-sky {
+        background: #080b0a !important;
+      }
+
+      .sw-sky__grad,
+      .sw-sky__glow {
+        opacity: 0.2;
+      }
+
+      .sw-topbar {
+        z-index: 50;
+        padding: 25px clamp(24px, 5vw, 64px);
+        background: linear-gradient(180deg, rgba(3, 6, 5, 0.66), transparent);
+      }
+
+      .sw-brand {
+        gap: 11px;
+      }
+
+      .sw-brand__mark {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #57c785;
+        box-shadow: 0 0 16px rgba(87, 199, 133, 0.82);
+      }
+
+      .sw-brand__name {
+        color: #f3f1ea;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(15px, 1.4vw, 20px);
+        font-weight: 600;
+        letter-spacing: 0.13em;
+      }
+
+      .sw-nav {
+        gap: 6px;
+        padding: 4px;
+        border: 1px solid rgba(243, 241, 234, 0.14);
+        background: rgba(5, 8, 6, 0.45);
+        backdrop-filter: blur(16px);
+      }
+
+      .sw-nav__item {
+        color: rgba(243, 241, 234, 0.56);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .sw-nav__item:hover {
+        color: #f3f1ea;
+      }
+
+      .sw-nav__item.is-active {
+        background: rgba(87, 199, 133, 0.14);
+        color: #57c785;
+      }
+
+      .sw-topcta {
+        border: 1px solid rgba(243, 241, 234, 0.18);
+        background: rgba(5, 8, 6, 0.38);
+        color: #f3f1ea;
+        font-size: 13px;
+        font-weight: 500;
+        backdrop-filter: blur(12px);
+        transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+      }
+
+      .sw-topcta:hover {
+        border-color: #57c785;
+        background: rgba(87, 199, 133, 0.1);
+        color: #57c785;
+      }
+
+      .sw-scrollbar {
+        z-index: 70;
+        height: 2px;
+        background: rgba(87, 199, 133, 0.1);
+      }
+
+      .sw-scene__video,
+      .sw-scene__still {
+        object-position: center center;
+        backface-visibility: hidden;
+        filter: none;
+        transform: translateZ(0);
+      }
+
+      .sw-scene__video {
+        transition: filter 70ms linear, transform 110ms ease-out;
+      }
+
+      .sw-root.is-scrolling .sw-scene__video {
+        filter: blur(var(--sw-motion-blur, 0px));
+        transform: translateZ(0) scale(1.006);
+      }
+
+      /* Grade above the film instead of filtering the video texture itself. This
+         preserves more edge detail and avoids an extra GPU resampling pass. */
+      .sw-scene::after {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: rgba(5, 8, 6, 0.42);
+        content: "";
+      }
+
+      .sw-scene:first-child::after {
+        background: rgba(5, 8, 6, 0.22);
+      }
+
+      .sw-copylayer::before {
+        width: min(70vw, 940px);
+        background: linear-gradient(
+          90deg,
+          rgba(5, 8, 6, 0.94) 0%,
+          rgba(5, 8, 6, 0.76) 30%,
+          rgba(5, 8, 6, 0.26) 64%,
+          transparent 100%
+        );
+      }
+
+      .sw-copy {
+        left: clamp(24px, 7vw, 92px);
+        width: min(43vw, 570px);
+      }
+
+      .sw-copy__num {
+        color: rgba(243, 241, 234, 0.4);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.24em;
+      }
+
+      .sw-copy__eyebrow {
+        margin-top: 18px;
+        color: #57c785;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.26em;
+      }
+
+      .sw-copy__title {
+        max-width: 12ch;
+        margin-top: 16px;
+        color: #f3f1ea;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(44px, 5.7vw, 78px);
+        font-weight: 500;
+        letter-spacing: -0.045em;
+        line-height: 0.98;
+        text-wrap: balance;
+        text-shadow: 0 3px 24px rgba(3, 6, 5, 0.78);
+      }
+
+      .sw-copy__body {
+        max-width: 48ch;
+        margin-top: 24px;
+        color: rgba(243, 241, 234, 0.65);
+        font-size: clamp(14px, 1.25vw, 17px);
+        font-weight: 300;
+        line-height: 1.65;
+      }
+
+      .sw-copy__tags {
+        max-width: 590px;
+        gap: 8px;
+        margin-top: 26px;
+      }
+
+      .sw-copy__tags li {
+        border: 1px solid rgba(87, 199, 133, 0.25);
+        background: rgba(8, 14, 11, 0.58);
+        color: rgba(243, 241, 234, 0.72);
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        backdrop-filter: blur(10px);
+      }
+
+      .sw-copy:first-child {
+        top: 49%;
+        left: 50%;
+        width: min(94vw, 1180px);
+        max-width: none;
+        text-align: center;
+        transform: translate(-50%, -50%) !important;
+      }
+
+      .sw-copy:first-child .sw-copy__num {
+        display: none;
+      }
+
+      .sw-copy:first-child .sw-copy__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 0;
+      }
+
+      .sw-copy:first-child .sw-copy__eyebrow::before {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #57c785;
+        box-shadow: 0 0 14px #57c785;
+        content: "";
+      }
+
+      .sw-copy:first-child .sw-copy__title {
+        max-width: none;
+        margin: clamp(22px, 3.5vh, 30px) auto 0;
+        font-size: clamp(72px, 13.2vw, 170px);
+        font-weight: 500;
+        letter-spacing: -0.06em;
+        line-height: 0.85;
+      }
+
+      .sw-copy:first-child .sw-copy__title span,
+      .sw-copy:first-child .sw-copy__title em {
+        display: block;
+      }
+
+      .sw-copy:first-child .sw-copy__title em {
+        color: #57c785;
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      .sw-copy:first-child .sw-copy__body {
+        max-width: 720px;
+        margin: clamp(22px, 3.5vh, 30px) auto 0;
+        text-wrap: balance;
+      }
+
+      .sw-copy__cta {
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .sw-btn {
+        padding: 14px 25px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .sw-btn--primary {
+        background: #57c785;
+        color: #07100b;
+      }
+
+      .sw-btn--ghost {
+        border-color: rgba(243, 241, 234, 0.24);
+        color: #f3f1ea;
+        backdrop-filter: blur(12px);
+      }
+
+      .sw-route {
+        right: clamp(15px, 2.2vw, 28px);
+        z-index: 45;
+      }
+
+      .sw-route::before {
+        width: 1px;
+        opacity: 0.26;
+      }
+
+      .sw-route__label {
+        border-color: rgba(243, 241, 234, 0.14);
+        background: rgba(5, 8, 6, 0.68);
+        color: rgba(243, 241, 234, 0.7);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .sw-hint {
+        display: none !important;
+      }
+
+      /* Alche-inspired editorial world: recreated with lightweight CSS, not copied assets. */
+      .sw-studio-grid {
+        position: fixed;
+        inset: -80px;
+        z-index: 16;
+        pointer-events: none;
+        opacity: 0.28;
+        background-image:
+          linear-gradient(rgba(243, 241, 234, 0.075) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(243, 241, 234, 0.075) 1px, transparent 1px),
+          linear-gradient(rgba(87, 199, 133, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(87, 199, 133, 0.045) 1px, transparent 1px);
+        background-position:
+          0 var(--sw-grid-y, 0px),
+          0 var(--sw-grid-y, 0px),
+          0 var(--sw-grid-y, 0px),
+          0 var(--sw-grid-y, 0px);
+        background-size: 72px 72px, 72px 72px, 18px 18px, 18px 18px;
+        mask-image: radial-gradient(ellipse at 55% 48%, #000 16%, rgba(0, 0, 0, 0.82) 58%, transparent 96%);
+        transition: opacity 700ms ease;
+      }
+
+      .sw-studio-grid::before {
+        position: fixed;
+        inset: 14px;
+        border: 1px solid rgba(243, 241, 234, 0.08);
+        box-shadow:
+          18px 0 0 -17px rgba(87, 199, 133, 0.28),
+          -18px 0 0 -17px rgba(87, 199, 133, 0.28);
+        content: "";
+      }
+
+      .sw-studio-grid::after {
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(90deg, transparent calc(50% - 10px), rgba(243, 241, 234, 0.22) calc(50% - 10px), rgba(243, 241, 234, 0.22) calc(50% + 10px), transparent calc(50% + 10px)) center 14px / 20px 1px no-repeat,
+          linear-gradient(transparent calc(50% - 10px), rgba(243, 241, 234, 0.22) calc(50% - 10px), rgba(243, 241, 234, 0.22) calc(50% + 10px), transparent calc(50% + 10px)) 14px center / 1px 20px no-repeat,
+          radial-gradient(circle, rgba(87, 199, 133, 0.68) 0 2px, transparent 2.5px) calc(100% - 14px) calc(100% - 14px) / 28px 28px no-repeat;
+        content: "";
+      }
+
+      .sw-worldtitle {
+        position: fixed;
+        top: 50%;
+        left: 58%;
+        z-index: 17;
+        width: max-content;
+        max-width: 86vw;
+        color: transparent;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(92px, 17vw, 250px);
+        font-weight: 600;
+        letter-spacing: -0.07em;
+        line-height: 0.8;
+        opacity: 0.12;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        -webkit-text-stroke: 1px rgba(243, 241, 234, 0.52);
+        text-transform: uppercase;
+        mix-blend-mode: screen;
+        transition: opacity 500ms ease, left 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .sw-root[data-section="hero"] .sw-worldtitle {
+        opacity: 0;
+      }
+
+      .sw-studio-meta {
+        position: fixed;
+        right: clamp(24px, 4vw, 60px);
+        bottom: 25px;
+        z-index: 42;
+        display: flex;
+        gap: 22px;
+        color: rgba(243, 241, 234, 0.42);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 8px;
+        letter-spacing: 0.18em;
+        pointer-events: none;
+        text-transform: uppercase;
+      }
+
+      .sw-stage {
+        clip-path: inset(0 round 0);
+        transition:
+          clip-path 900ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 900ms ease;
+      }
+
+      .sw-root[data-section="work"] .sw-stage,
+      .sw-root[data-section="outcomes"] .sw-stage {
+        clip-path: inset(7vh 3.5vw 7vh 37vw round 4px);
+        filter: drop-shadow(0 28px 60px rgba(0, 0, 0, 0.5));
+      }
+
+      .sw-root[data-section="work"] .sw-worldtitle,
+      .sw-root[data-section="outcomes"] .sw-worldtitle {
+        left: 67%;
+        opacity: 0.18;
+      }
+
+      .sw-root[data-section="outcomes"] .sw-studio-grid {
+        opacity: 0.42;
+      }
+
+      .sw-root[data-section="work"] .sw-copy__tags {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+        perspective: 900px;
+      }
+
+      .sw-root[data-section="work"] .sw-copy__tags li {
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        border-radius: 2px;
+        background: linear-gradient(135deg, rgba(11, 19, 15, 0.88), rgba(87, 199, 133, 0.08));
+        transform: rotateX(2deg);
+      }
+
+      .sw-route {
+        right: auto;
+        left: 0;
+        width: 100px;
+        gap: 8px;
+        padding: 16px 0;
+      }
+
+      .sw-route::before {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: none;
+      }
+
+      .sw-route__dot {
+        width: 100px;
+        height: 27px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 0;
+      }
+
+      .sw-route__dot i {
+        width: 14px;
+        height: 1px;
+        border-radius: 0;
+        transform-origin: left center;
+      }
+
+      .sw-route__dot:hover i,
+      .sw-route__dot.is-active i {
+        width: 30px;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .sw-route__label {
+        position: static;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        background: transparent;
+        opacity: 0.36;
+        transform: none;
+        backdrop-filter: none;
+        transition: opacity 250ms ease;
+      }
+
+      .sw-route__dot:hover .sw-route__label,
+      .sw-route__dot.is-active .sw-route__label {
+        opacity: 0.9;
+        transform: none;
+      }
+
+      @media (max-width: 860px) {
+        .sw-topbar {
+          padding: 20px 20px;
+        }
+
+        .sw-copylayer::before {
+          height: 70%;
+          width: 100%;
+          background: linear-gradient(0deg, #080b0a 7%, rgba(8, 11, 10, 0.78) 47%, transparent 100%);
+        }
+
+        .sw-copy,
+        .sw-copy:first-child {
+          top: auto;
+          right: 24px;
+          bottom: calc(clamp(68px, 13dvh, 118px) + env(safe-area-inset-bottom));
+          left: 24px;
+          width: auto;
+          max-width: 620px;
+          text-align: left;
+          transform: none !important;
+        }
+
+        .sw-copy:first-child .sw-copy__title {
+          margin-left: 0;
+          font-size: clamp(62px, 20vw, 102px);
+          line-height: 0.9;
+        }
+
+        .sw-copy:first-child .sw-copy__body {
+          margin-left: 0;
+        }
+
+        .sw-copy__title {
+          font-size: clamp(38px, 10vw, 60px);
+        }
+
+        .sw-copy__body {
+          margin-top: 16px;
+          line-height: 1.5;
+        }
+
+        .sw-copy__tags {
+          margin-top: 18px;
+        }
+
+        .sw-route {
+          right: 2px;
+          left: auto;
+          width: auto;
+          gap: 16px;
+          padding: 14px 6px;
+        }
+
+        .sw-route::before {
+          top: 22px;
+          bottom: 22px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .sw-route__dot {
+          width: 28px;
+          height: 28px;
+          display: grid;
+          padding: 0;
+        }
+
+        .sw-route__dot i,
+        .sw-route__dot:hover i,
+        .sw-route__dot.is-active i {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+        }
+
+        .sw-worldtitle {
+          left: 50%;
+          font-size: clamp(76px, 25vw, 132px);
+          opacity: 0.08;
+        }
+
+        .sw-studio-meta {
+          display: none;
+        }
+
+        .sw-root[data-section="work"] .sw-stage,
+        .sw-root[data-section="outcomes"] .sw-stage {
+          clip-path: inset(0 round 0);
+          filter: none;
+        }
+
+        .sw-scene__video,
+        .sw-scene__still {
+          object-position: center center;
+        }
+      }
+
+      @media (max-height: 690px) and (min-width: 861px) {
+        .sw-copy:first-child .sw-copy__title {
+          font-size: clamp(62px, 10.5vw, 122px);
+        }
+
+        .sw-copy:first-child .sw-copy__body {
+          margin-top: 18px;
+        }
+
+        .sw-copy__title {
+          font-size: clamp(38px, 4.8vw, 62px);
+        }
+
+        .sw-copy__body {
+          margin-top: 16px;
+          line-height: 1.5;
+        }
+
+        .sw-copy__tags {
+          margin-top: 18px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .sw-scene__video {
+          filter: none !important;
+          transform: translateZ(0) !important;
+          transition: none;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="world"></div>
+
+    <script src="./scrub-engine.js"></script>
+    <script>
+      const heroFilm = "./terra-scrub-g4.mp4";
+      const transitionFilm = "./terra-to-strategy-scrub-g4.mp4";
+      const strategyFilm = "./strategy-scrub-g4.mp4";
+
+      mountScrollWorld(document.getElementById("world"), {
+        brand: { name: "ATHARVA THAKAR", href: "#" },
+        cta: { label: "Let’s talk →", href: "mailto:atharva.thakar@gmail.com" },
+        hint: "scroll to move through",
+        nav: true,
+        atmosphere: false,
+        meta: ["Sydney / Australia", "33.8688° S · 151.2093° E"],
+        diveScroll: 1.38,
+        connScroll: 2.15,
+        crossfade: 0.055,
+        renderFPS: 144,
+        mobileRenderFPS: 60,
+        sourceFPS: 24,
+        motionBlur: true,
+        motionBlurMax: 1.65,
+        sections: [
+          {
+            id: "hero",
+            label: "Hero",
+            still: "./hero-poster.png",
+            clip: heroFilm,
+            clipStart: 0,
+            clipEnd: 5.04,
+            scroll: 1.7,
+            linger: 0.34,
+            accent: "#57c785",
+            eyebrow: "Marketing & Business Strategist",
+            titleHtml: "<span>Markets,</span><em>moved.</em>",
+            body: "Translating complex markets into revenue — bridging technology and international business to build, launch and scale brands."
+          },
+          {
+            id: "profile",
+            label: "Profile",
+            still: "./profile-poster.png",
+            clip: strategyFilm,
+            clipStart: 0,
+            clipEnd: 2.25,
+            scroll: 1.42,
+            linger: 0.2,
+            accent: "#57c785",
+            eyebrow: "Profile",
+            title: "Complexity into measurable revenue.",
+            body: "A Sydney-based strategist with a dual background in computer engineering and international business — turning market data into plans teams can actually execute.",
+            tags: ["Technology × Business", "Sydney, NSW", "UNSW · Pune"]
+          },
+          {
+            id: "work",
+            label: "Work",
+            still: "./work-poster.png",
+            clip: strategyFilm,
+            clipStart: 2.25,
+            clipEnd: 4.75,
+            scroll: 1.48,
+            linger: 0.24,
+            accent: "#69d69a",
+            eyebrow: "Selected work",
+            title: "Prestige, SaaS and high-growth startups.",
+            body: "Commercial and go-to-market work spanning PUIG brands, ProcurePro, Practicum.ai and Pelf Infotech — from customer-facing activations to global B2B expansion.",
+            tags: ["PUIG · #1 nationwide", "ProcurePro · EU & Americas", "Practicum.ai · +25% leads", "Pelf · $1M+"]
+          },
+          {
+            id: "outcomes",
+            label: "Outcomes",
+            still: "./outcomes-poster.png",
+            clip: strategyFilm,
+            clipStart: 4.75,
+            clipEnd: 6.45,
+            scroll: 1.38,
+            linger: 0.18,
+            accent: "#72dfa5",
+            eyebrow: "By the numbers",
+            title: "Outcomes, not adjectives.",
+            body: "Commercial performance measured in revenue, ranking, qualified demand and teams moved forward.",
+            tags: ["$1M+ enterprise revenue", "#1 nationwide", "+25% qualified leads", "20 people led"]
+          },
+          {
+            id: "contact",
+            label: "Contact",
+            still: "./contact-poster.png",
+            clip: strategyFilm,
+            clipStart: 6.45,
+            clipEnd: 8,
+            scroll: 1.62,
+            linger: 0.38,
+            accent: "#57c785",
+            eyebrow: "Based in Sydney",
+            title: "Let’s talk.",
+            body: "For brand strategy, go-to-market and commercial growth opportunities, start a conversation with Atharva.",
+            tags: ["Sydney, NSW", "Available for opportunities"],
+            cta: {
+              primary: { label: "Email Atharva", href: "mailto:atharva.thakar@gmail.com" },
+              secondary: { label: "LinkedIn", href: "https://www.linkedin.com/in/atharvathakar" }
+            }
+          }
+        ],
+        connectors: [transitionFilm, null, null, null]
+      });
+
+    </script>
+  </body>
+</html>

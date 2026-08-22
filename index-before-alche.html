@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Atharva Thakar is a Sydney-based marketing and business strategist turning complex markets into measurable revenue."
+    />
+    <title>Atharva Thakar — Marketing &amp; Business Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root,
+      .sw-root {
+        --sw-bg: #080b0a;
+        --sw-ink: #f3f1ea;
+        --sw-ink-soft: rgba(243, 241, 234, 0.62);
+        --sw-accent: #57c785;
+        --sw-font-display: "Manrope", sans-serif;
+        --sw-font-body: "Inter", sans-serif;
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: #080b0a;
+        scroll-behavior: auto;
+      }
+
+      body {
+        margin: 0;
+        background: #080b0a;
+        color: #f3f1ea;
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .sw-root::after {
+        position: fixed;
+        inset: 0;
+        z-index: 15;
+        pointer-events: none;
+        background:
+          radial-gradient(120% 100% at 50% 42%, transparent 38%, rgba(3, 6, 5, 0.58) 100%),
+          linear-gradient(180deg, rgba(3, 6, 5, 0.64), transparent 20%, transparent 68%, rgba(3, 6, 5, 0.74));
+        content: "";
+      }
+
+      .sw-sky {
+        background: #080b0a !important;
+      }
+
+      .sw-sky__grad,
+      .sw-sky__glow {
+        opacity: 0.2;
+      }
+
+      .sw-topbar {
+        z-index: 50;
+        padding: 25px clamp(24px, 5vw, 64px);
+        background: linear-gradient(180deg, rgba(3, 6, 5, 0.66), transparent);
+      }
+
+      .sw-brand {
+        gap: 11px;
+      }
+
+      .sw-brand__mark {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #57c785;
+        box-shadow: 0 0 16px rgba(87, 199, 133, 0.82);
+      }
+
+      .sw-brand__name {
+        color: #f3f1ea;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(15px, 1.4vw, 20px);
+        font-weight: 600;
+        letter-spacing: 0.13em;
+      }
+
+      .sw-nav {
+        gap: 6px;
+        padding: 4px;
+        border: 1px solid rgba(243, 241, 234, 0.14);
+        background: rgba(5, 8, 6, 0.45);
+        backdrop-filter: blur(16px);
+      }
+
+      .sw-nav__item {
+        color: rgba(243, 241, 234, 0.56);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .sw-nav__item:hover {
+        color: #f3f1ea;
+      }
+
+      .sw-nav__item.is-active {
+        background: rgba(87, 199, 133, 0.14);
+        color: #57c785;
+      }
+
+      .sw-topcta {
+        border: 1px solid rgba(243, 241, 234, 0.18);
+        background: rgba(5, 8, 6, 0.38);
+        color: #f3f1ea;
+        font-size: 13px;
+        font-weight: 500;
+        backdrop-filter: blur(12px);
+        transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+      }
+
+      .sw-topcta:hover {
+        border-color: #57c785;
+        background: rgba(87, 199, 133, 0.1);
+        color: #57c785;
+      }
+
+      .sw-scrollbar {
+        z-index: 70;
+        height: 2px;
+        background: rgba(87, 199, 133, 0.1);
+      }
+
+      .sw-scene__video,
+      .sw-scene__still {
+        object-position: center center;
+        filter: saturate(0.82) contrast(1.08) brightness(0.58);
+      }
+
+      .sw-scene:first-child .sw-scene__video,
+      .sw-scene:first-child .sw-scene__still {
+        filter: saturate(0.9) contrast(1.08) brightness(0.76);
+      }
+
+      .sw-copylayer::before {
+        width: min(70vw, 940px);
+        background: linear-gradient(
+          90deg,
+          rgba(5, 8, 6, 0.94) 0%,
+          rgba(5, 8, 6, 0.76) 30%,
+          rgba(5, 8, 6, 0.26) 64%,
+          transparent 100%
+        );
+      }
+
+      .sw-copy {
+        left: clamp(24px, 7vw, 92px);
+        width: min(43vw, 570px);
+      }
+
+      .sw-copy__num {
+        color: rgba(243, 241, 234, 0.4);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.24em;
+      }
+
+      .sw-copy__eyebrow {
+        margin-top: 18px;
+        color: #57c785;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.26em;
+      }
+
+      .sw-copy__title {
+        max-width: 12ch;
+        margin-top: 16px;
+        color: #f3f1ea;
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(44px, 5.7vw, 78px);
+        font-weight: 500;
+        letter-spacing: -0.045em;
+        line-height: 0.98;
+        text-wrap: balance;
+        text-shadow: 0 3px 24px rgba(3, 6, 5, 0.78);
+      }
+
+      .sw-copy__body {
+        max-width: 48ch;
+        margin-top: 24px;
+        color: rgba(243, 241, 234, 0.65);
+        font-size: clamp(14px, 1.25vw, 17px);
+        font-weight: 300;
+        line-height: 1.65;
+      }
+
+      .sw-copy__tags {
+        max-width: 590px;
+        gap: 8px;
+        margin-top: 26px;
+      }
+
+      .sw-copy__tags li {
+        border: 1px solid rgba(87, 199, 133, 0.25);
+        background: rgba(8, 14, 11, 0.58);
+        color: rgba(243, 241, 234, 0.72);
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        backdrop-filter: blur(10px);
+      }
+
+      .sw-copy:first-child {
+        top: 49%;
+        left: 50%;
+        width: min(94vw, 1180px);
+        max-width: none;
+        text-align: center;
+        transform: translate(-50%, -50%) !important;
+      }
+
+      .sw-copy:first-child .sw-copy__num {
+        display: none;
+      }
+
+      .sw-copy:first-child .sw-copy__eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 0;
+      }
+
+      .sw-copy:first-child .sw-copy__eyebrow::before {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #57c785;
+        box-shadow: 0 0 14px #57c785;
+        content: "";
+      }
+
+      .sw-copy:first-child .sw-copy__title {
+        max-width: none;
+        margin: clamp(22px, 3.5vh, 30px) auto 0;
+        font-size: clamp(72px, 13.2vw, 170px);
+        font-weight: 500;
+        letter-spacing: -0.06em;
+        line-height: 0.85;
+      }
+
+      .sw-copy:first-child .sw-copy__title span,
+      .sw-copy:first-child .sw-copy__title em {
+        display: block;
+      }
+
+      .sw-copy:first-child .sw-copy__title em {
+        color: #57c785;
+        font-style: normal;
+        font-weight: 700;
+      }
+
+      .sw-copy:first-child .sw-copy__body {
+        max-width: 720px;
+        margin: clamp(22px, 3.5vh, 30px) auto 0;
+        text-wrap: balance;
+      }
+
+      .sw-copy__cta {
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .sw-btn {
+        padding: 14px 25px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .sw-btn--primary {
+        background: #57c785;
+        color: #07100b;
+      }
+
+      .sw-btn--ghost {
+        border-color: rgba(243, 241, 234, 0.24);
+        color: #f3f1ea;
+        backdrop-filter: blur(12px);
+      }
+
+      .sw-route {
+        right: clamp(15px, 2.2vw, 28px);
+        z-index: 45;
+      }
+
+      .sw-route::before {
+        width: 1px;
+        opacity: 0.26;
+      }
+
+      .sw-route__label {
+        border-color: rgba(243, 241, 234, 0.14);
+        background: rgba(5, 8, 6, 0.68);
+        color: rgba(243, 241, 234, 0.7);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .sw-hint {
+        bottom: 24px;
+        color: rgba(243, 241, 234, 0.5);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+        letter-spacing: 0.24em;
+      }
+
+      .sw-hint i {
+        border-color: rgba(243, 241, 234, 0.22);
+      }
+
+      @media (max-width: 860px) {
+        .sw-topbar {
+          padding: 20px 20px;
+        }
+
+        .sw-copylayer::before {
+          height: 70%;
+          width: 100%;
+          background: linear-gradient(0deg, #080b0a 7%, rgba(8, 11, 10, 0.78) 47%, transparent 100%);
+        }
+
+        .sw-copy,
+        .sw-copy:first-child {
+          top: auto;
+          right: 24px;
+          bottom: calc(clamp(68px, 13dvh, 118px) + env(safe-area-inset-bottom));
+          left: 24px;
+          width: auto;
+          max-width: 620px;
+          text-align: left;
+          transform: none !important;
+        }
+
+        .sw-copy:first-child .sw-copy__title {
+          margin-left: 0;
+          font-size: clamp(62px, 20vw, 102px);
+          line-height: 0.9;
+        }
+
+        .sw-copy:first-child .sw-copy__body {
+          margin-left: 0;
+        }
+
+        .sw-copy__title {
+          font-size: clamp(38px, 10vw, 60px);
+        }
+
+        .sw-copy__body {
+          margin-top: 16px;
+          line-height: 1.5;
+        }
+
+        .sw-copy__tags {
+          margin-top: 18px;
+        }
+
+        .sw-route {
+          right: 2px;
+        }
+
+        .sw-scene__video,
+        .sw-scene__still {
+          object-position: center center;
+        }
+      }
+
+      @media (max-height: 690px) and (min-width: 861px) {
+        .sw-copy:first-child .sw-copy__title {
+          font-size: clamp(62px, 10.5vw, 122px);
+        }
+
+        .sw-copy:first-child .sw-copy__body {
+          margin-top: 18px;
+        }
+
+        .sw-copy__title {
+          font-size: clamp(38px, 4.8vw, 62px);
+        }
+
+        .sw-copy__body {
+          margin-top: 16px;
+          line-height: 1.5;
+        }
+
+        .sw-copy__tags {
+          margin-top: 18px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="world"></div>
+
+    <script src="./scrub-engine.js"></script>
+    <script>
+      const strategyFilm = "./Abstract_liquid_transition_strat%E2%80%A6_202608032342.mp4";
+
+      mountScrollWorld(document.getElementById("world"), {
+        brand: { name: "ATHARVA THAKAR", href: "#" },
+        cta: { label: "Let’s talk →", href: "mailto:atharva.thakar@gmail.com" },
+        hint: "scroll to move through",
+        nav: true,
+        atmosphere: false,
+        diveScroll: 1.38,
+        crossfade: 0.14,
+        sections: [
+          {
+            id: "hero",
+            label: "Hero",
+            clip: "./terra.mp4",
+            clipStart: 0,
+            clipEnd: 5.04,
+            scroll: 1.7,
+            linger: 0.34,
+            accent: "#57c785",
+            eyebrow: "Marketing & Business Strategist",
+            titleHtml: "<span>Markets,</span><em>moved.</em>",
+            body: "Translating complex markets into revenue — bridging technology and international business to build, launch and scale brands."
+          },
+          {
+            id: "profile",
+            label: "Profile",
+            clip: strategyFilm,
+            clipStart: 0,
+            clipEnd: 2.25,
+            scroll: 1.42,
+            linger: 0.2,
+            accent: "#57c785",
+            eyebrow: "Profile",
+            title: "Complexity into measurable revenue.",
+            body: "A Sydney-based strategist with a dual background in computer engineering and international business — turning market data into plans teams can actually execute.",
+            tags: ["Technology × Business", "Sydney, NSW", "UNSW · Pune"]
+          },
+          {
+            id: "work",
+            label: "Work",
+            clip: strategyFilm,
+            clipStart: 2.25,
+            clipEnd: 4.75,
+            scroll: 1.48,
+            linger: 0.24,
+            accent: "#69d69a",
+            eyebrow: "Selected work",
+            title: "Prestige, SaaS and high-growth startups.",
+            body: "Commercial and go-to-market work spanning PUIG brands, ProcurePro, Practicum.ai and Pelf Infotech — from customer-facing activations to global B2B expansion.",
+            tags: ["PUIG · #1 nationwide", "ProcurePro · EU & Americas", "Practicum.ai · +25% leads", "Pelf · $1M+"]
+          },
+          {
+            id: "outcomes",
+            label: "Outcomes",
+            clip: strategyFilm,
+            clipStart: 4.75,
+            clipEnd: 6.45,
+            scroll: 1.38,
+            linger: 0.18,
+            accent: "#72dfa5",
+            eyebrow: "By the numbers",
+            title: "Outcomes, not adjectives.",
+            body: "Commercial performance measured in revenue, ranking, qualified demand and teams moved forward.",
+            tags: ["$1M+ enterprise revenue", "#1 nationwide", "+25% qualified leads", "20 people led"]
+          },
+          {
+            id: "contact",
+            label: "Contact",
+            clip: strategyFilm,
+            clipStart: 6.45,
+            clipEnd: 8,
+            scroll: 1.62,
+            linger: 0.38,
+            accent: "#57c785",
+            eyebrow: "Based in Sydney",
+            title: "Let’s talk.",
+            body: "For brand strategy, go-to-market and commercial growth opportunities, start a conversation with Atharva.",
+            tags: ["Sydney, NSW", "Available for opportunities"],
+            cta: {
+              primary: { label: "Email Atharva", href: "mailto:atharva.thakar@gmail.com" },
+              secondary: { label: "LinkedIn", href: "https://www.linkedin.com/in/atharvathakar" }
+            }
+          }
+        ],
+        connectors: []
+      });
+    </script>
+  </body>
+</html>
