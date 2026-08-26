@@ -353,11 +353,16 @@ function mountScrollWorld(container, config) {
       // H.264 decoders could seek at once. Snap their logical cursor silently and
       // reserve actual decoding for the one or two layers taking part in a fade.
       if (!s.visible) { s.cur = s.target; continue; }
-      s.cur += (s.target - s.cur) * (reduce ? 1 : follow);
-      // Never queue a seek while the decoder is still resolving the last one.
-      // On phones a fast flick would otherwise pile up seeks and freeze the clip;
-      // cur still follows the latest target, so the next seek catches up immediately.
+      // Never queue a seek while the decoder is still resolving the last one — but
+      // freeze `cur` here too instead of continuing to ease it toward target every
+      // frame. A GOP-heavy 1080p clip can take several raf ticks to land a seek; if
+      // cur kept advancing the whole time it would run far ahead of what the decoder
+      // has actually shown, so the seek that finally lands jumps to a stale-then-
+      // skipped frame instead of a smooth continuation (the "background lags, then
+      // snaps" stutter). Holding cur in place bounds the catch-up to one frame's
+      // worth of easing once the decoder is free again.
       if (s.video.seeking) continue;
+      s.cur += (s.target - s.cur) * (reduce ? 1 : follow);
       const dur = s.video.duration || 1;
       const rangeStart = Number.isFinite(s.clipStart) ? clamp(s.clipStart, 0, dur) : 0;
       const rangeEnd = Number.isFinite(s.clipEnd) ? clamp(s.clipEnd, rangeStart, dur) : dur;
