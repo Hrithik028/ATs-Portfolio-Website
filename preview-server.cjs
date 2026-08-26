@@ -15,6 +15,11 @@ const types = {
   ".svg": "image/svg+xml",
   ".webp": "image/webp"
 };
+// scrub-engine.js fetches whole clips as blobs, so an uncacheable video response
+// means every reload re-downloads several MB before scrubbing can start smoothly.
+// Binary assets here are content, not markup, so they're safe to cache hard;
+// html/js/css keep the old no-cache behaviour so local edits show up on refresh.
+const immutableExts = new Set([".mp4", ".png", ".jpg", ".jpeg", ".webp", ".svg"]);
 
 http
   .createServer((request, response) => {
@@ -33,7 +38,17 @@ http
         return;
       }
 
-      const contentType = types[path.extname(filePath).toLowerCase()] || "application/octet-stream";
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = types[ext] || "application/octet-stream";
+      const cacheControl = immutableExts.has(ext) ? "public, max-age=31536000, immutable" : "no-cache";
+      const etag = `"${stats.size}-${stats.mtimeMs}"`;
+      const lastModified = stats.mtime.toUTCString();
+
+      if (request.headers["if-none-match"] === etag || request.headers["if-modified-since"] === lastModified) {
+        response.writeHead(304, { "Cache-Control": cacheControl, ETag: etag, "Last-Modified": lastModified }).end();
+        return;
+      }
+
       const range = request.headers.range;
 
       if (range) {
@@ -52,7 +67,9 @@ http
 
         response.writeHead(206, {
           "Accept-Ranges": "bytes",
-          "Cache-Control": "no-cache",
+          "Cache-Control": cacheControl,
+          ETag: etag,
+          "Last-Modified": lastModified,
           "Content-Length": end - start + 1,
           "Content-Range": `bytes ${start}-${end}/${stats.size}`,
           "Content-Type": contentType
@@ -63,7 +80,9 @@ http
 
       response.writeHead(200, {
         "Accept-Ranges": "bytes",
-        "Cache-Control": "no-cache",
+        "Cache-Control": cacheControl,
+        ETag: etag,
+        "Last-Modified": lastModified,
         "Content-Length": stats.size,
         "Content-Type": contentType
       });

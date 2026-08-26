@@ -14,6 +14,11 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     />
+    <!-- Kick off the hero scene's fetches during HTML parse instead of waiting for
+         scrub-engine.js to execute and call loadClip() — cuts the delay before the
+         first scroll has a decoded frame to show. -->
+    <link rel="preload" as="image" href="./hero-poster.png" fetchpriority="high" />
+    <link rel="preload" as="fetch" href="./terra-scrub-g4.mp4" crossorigin="anonymous" />
     <style>
       :root,
       .sw-root {
